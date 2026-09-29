@@ -1,0 +1,18 @@
+{
+  "name": "segue-hrms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Segue HRMS — enterprise human capital management (NestJS API + Next.js web)",
+  "scripts": {
+    "setup": "npm install && npm --prefix backend install && npm --prefix frontend install && node -e \"const f=require('fs');for(const [s,d] of [['backend/.env.example','backend/.env'],['frontend/.env.example','frontend/.env.local']])if(!f.existsSync(d))f.copyFileSync(s,d)\" && npm run seed",
+    "seed": "npm --prefix backend run seed",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm --prefix backend run start:dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "start": "concurrently -n api,web -c blue,magenta \"npm --prefix backend run start:prod\" \"npm --prefix frontend run start\"",
+    "test": "npm --prefix backend test",
+    "lint": "npm --prefix frontend run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
